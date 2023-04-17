@@ -1,15 +1,6 @@
 name: test
 on:
-  push:
-    branches:
-      - 'master'
-      - 'release-[0-9]+.[0-9]+'
-  pull_request:
-    branches:
-      - 'master'
-      - 'release-[0-9]+.[0-9]+'
-    paths-ignore:
-      - 'contrib/**'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
